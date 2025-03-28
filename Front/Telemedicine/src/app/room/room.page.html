@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item>
+      <ion-avatar slot="start">
+        <a href="https://ibb.co/bz5VHp0"><img src="https://i.ibb.co/bz5VHp0/Image.png" alt="Image" border="0"></a>
+      </ion-avatar>
+      <ion-label >
+         TeleSound
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-item>
+    <ion-select label="Choose Audio Device" [(ngModel)]="selectedDeviceId" (ionChange)="deviceSelected()">
+      <ion-select-option *ngFor="let device of audioDevices" [value]="device.deviceId">
+        {{ device.label }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-card-content>
+  <ion-button class="button" expand="block" (click)="toggleMuteAll()">
+    {{ areAllMuted ? 'Unmute' : 'Mute' }}
+    <div class="hoverEffect">
+      <div></div>
+    </div>
+  </ion-button>
+  <ion-button expand="block" (click)="toggleVideoAll()">
+    {{ areAllVideosVisible ? 'Hide Video' : 'Show Video' }}
+    <div class="hoverEffect">
+      <div></div>
+    </div>
+  </ion-button>
+    <ion-button [disabled]="trackingButtonDisabled" (click)="startPoseDetection()">Start Pose Detection
+    <div class="hoverEffect">
+      <div></div>
+    </div>
+  </ion-button>
+  </ion-card-content>
+  </ion-card>
+
+<div class="card">
+  <div class="video-grid">
+    <div class="video-container" *ngFor="let video of videos">
+      <span *ngIf="video.userId !== currentUserId; else currentUserVideoLabel">
+      </span>
+      <ng-template #currentUserVideoLabel>
+        <span>  </span>
+      </ng-template> <!--Assign userId as the id of the video DOM element-->
+      <div style="position: relative; width: 640px; height: 480px;">
+        <canvas id="canvas" (click)="onCanvasClick($event)" style="position: absolute; width: 100%; height: 100%; z-index: 2;"></canvas>
+        <video style="position: absolute; width: 100%; height: 100%; z-index: 1;"
+         class="video-element"
+         [id]="video.userId"
+         [srcObject]="video.srcObject"
+         (loadedmetadata)="onLoadedMetaData($event)"
+         [muted]="video.muted"
+         *ngIf="video.showVideo"
+        ></video>
+        <img id="stethoscope" src="https://wiins.org/wp-content/uploads/2016/06/icon-medical.png" alt="Stethoscope Icon" />
+      </div>
+    </div>
+  </div>
+</div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img
+src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1640533136907x575546093153082050%2FADULogo.png?w=&h=&auto=compress&dpr=1&fit=max"
+        />
+      </ion-avatar>
+      <ion-label >
+        <p><ion-icon></ion-icon> Developed By: Huda Sliman , Noora Saeed Alhajeri, and Noran Khalid</p>
+        <p><ion-icon></ion-icon> Supervised By :  Prof. Mohammed Ghazal</p>
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

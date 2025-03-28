@@ -1,0 +1,13 @@
+{
+  "name": "Zoomclone",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/socket.io",
+      "proxyUrl": "https://socket1-ba5ef2c37ead.herokuapp.com"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+    "/socket.io": {
+      "target": "https://socket1-ba5ef2c37ead.herokuapp.com",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  
