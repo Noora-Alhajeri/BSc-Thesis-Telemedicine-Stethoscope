@@ -1,6 +1,6 @@
 # BSc-Thesis-Telemedicine-Stethoscope
 
-### **Supervised by:** [Prof. Mohammed Ghazal](https://scholar.google.com/citations?user=9eUEmVIAAAAJ&hl=en)  
+#### BSc (Hons) in Biomedical Engineering Thesis, **supervised by:** [Prof. Mohammed Ghazal](https://scholar.google.com/citations?user=9eUEmVIAAAAJ&hl=en)  
 
 ## Overview
 This **Bachelor Thesis (A*)** presents the design, development, and implementation of the **Telemedicine Stethoscope System** – a novel solution aimed at improving remote auscultation in telemedicine. The system enables doctors to listen to a patient's heart and lung sounds in real-time while accurately positioning the stethoscope on the patient's body remotely. 
