@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 
 // new Firebase  config
 const firebaseConfig = {
-  apiKey: 'AIzaSyBH44PSGLP2muyz7e6aZxB6SM674OrUQFU',
+  apiKey: '##################################',
   authDomain: 'capstone-3c28f.firebaseapp.com',
   projectId: 'capstone-3c28f',
   storageBucket: 'capstone-3c28f.appspot.com',
