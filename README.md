@@ -19,7 +19,9 @@ Allows the doctor to accurately select a point on the patient’s chest for stet
 3. **Locating the Stethoscope Location**  
 Uses robotic arm assistance to automatically move the stethoscope to the selected position on the patient’s body.
 
-![System Overview](./figures/Sys1.pdf)
+![System Overview](./figures/system.png)
+
+[Download Full PDF](./figures/Sys1.pdf)
 
 ---
 
@@ -64,7 +66,7 @@ Ensure: Detected pose P and tracked point T
 4. Identify the chest area based on key body part locations in P
 5. Store coordinates of the chest area as T in the Real-time Database
 6. Return P, T
-
+```
 
 ---
 
@@ -88,7 +90,9 @@ The system uses a **Dobot Robotic Arm** that receives coordinates from Firebase 
    - \( f_{\text{inv}} \) denotes the inverse kinematics function.
 
 A demonstration video of the robotic arm's movement is available below:
-[Watch Robotic Arm Test](./figures/ROBOTIC_ARM_TEST.mp4)
+- [Watch Robotic Arm Test Here (Local)](./figures/ROBOTIC_ARM_TEST.mp4)
+- [Watch Robotic Arm Test on Google Drive](https://drive.google.com/file/d/129X1QHnHIa02VOYFutS4KzQeHdDp3Whk/view?usp=sharing)
+
 
 ---
 
@@ -106,7 +110,7 @@ The system integrates several hardware components to facilitate effective commun
 
 ## Final Output
 
-![Final Results](./figures/Output.pdf) 
+[Final Output PDF](./figures/Output.pdf) 
 
 ### Interface Navigation
 To initiate a telemedicine consultation with the system:
