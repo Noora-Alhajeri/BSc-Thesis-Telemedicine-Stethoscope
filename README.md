@@ -1,60 +1,38 @@
 # BSc-Thesis-Telemedicine-Stethoscope
 
+### **Supervised by:** [Prof. Mohammed Ghazal](https://scholar.google.com/citations?user=9eUEmVIAAAAJ&hl=en)  
+
 ## Overview
 This **Bachelor Thesis (A*)** presents the design, development, and implementation of the **Telemedicine Stethoscope System** – a novel solution aimed at improving remote auscultation in telemedicine. The system enables doctors to listen to a patient's heart and lung sounds in real-time while accurately positioning the stethoscope on the patient's body remotely. 
+
+**Goal**: 
+To bridge the gap between physical and virtual auscultation, enhancing remote healthcare accessibility.
 
 ---
 ## Design
 
 ### System Overview
 
-The Telemedicine Stethoscope System is composed of three primary subsystems:
-
-1. **Real-time Streaming**  
-Handles the real-time transmission of heart and lung sounds from the patient to the doctor with minimal latency.
-
-2. **Pose Detection and Point Selection Tracking**  
-Allows the doctor to accurately select a point on the patient’s chest for stethoscope placement by analyzing the patient’s pose.
-
-3. **Locating the Stethoscope Location**  
-Uses robotic arm assistance to automatically move the stethoscope to the selected position on the patient’s body.
+The **Telemedicine Stethoscope System** is structured into **three core subsystems**:  
 
 ![System Overview](./figures/system.png)
 
-[Download Full PDF](./figures/Sys1.pdf)
 
----
 
-### Component Design
+1. **Real-time Streaming Subsystem**  
+Facilitates a **seamless** real-time connection between doctor and patient.  
+   - **Client Interface**: Developed with **Angular (HTML, CSS, TypeScript)** for an intuitive UI.
+   - **Server Backend**: Implemented in **Node.js** and deployed on **Heroku** for smooth communication.
+   - **Deployment**: Hosted on **Firebase** for easy web access.
+   - **Communication Protocol**: Uses **WebRTC** for peer-to-peer streaming and **Socket.io** for signaling.
 
-#### 1. Live Streaming Subsystem
 
-The live streaming subsystem enables a continuous video/audio connection between the patient and the doctor.
-- **Client-side Interface:**  
-Built using the Angular framework (HTML, CSS, and TypeScript) to create a dynamic and user-friendly interface.
   
-- **Server-side Operations:**  
-Implemented with Node.js, hosted on Heroku to handle backend operations and ensure smooth communication with the frontend.
-
-- **Deployment:**  
-The application is deployed on Firebase Hosting for seamless web access and scalability.
-
-- **Workflow:**  
-Peer-to-peer communication is established using WebRTC, and Socket.io enhances signaling. This workflow is shown in the diagram below.
-
-
----
-
-#### 2. Pose Detection and Point Selection Tracking Subsystem
-
-This subsystem allows the doctor to precisely select the location for stethoscope placement on the patient's chest.
-
-- **Pose Estimation Model:**  
-TensorFlow.js, in combination with the MoveNet model, is used for real-time estimation of the patient’s body pose. The system detects keypoints (e.g., shoulders) to determine the optimal chest area.
-
-- **Tracked Point Selection:**  
-During the video call, the doctor can click on the video stream to select the auscultation point. The system highlights this point with a red dot (stethoscope icon) and stores the coordinates in Firebase Realtime Database.
-
+2. **Pose Detection and Point Selection Tracking Subsystem**  
+Empowers the doctor to **mark** the exact stethoscope placement point on the patient’s body.  
+   - **Pose Estimation Model**: Utilizes **TensorFlow.js + MoveNet** to detect key body points (e.g., shoulders, chest).
+   - **Selection Mechanism**: The doctor clicks on the **live video stream** to select a point, stored in **Firebase**.
+   - **Real-Time Visualization**: A **red dot (stethoscope icon)** appears on the video feed, guiding the patient.
 ```text
 Algorithm 1: Pose Detection and Point Selection Tracking Subsystem
 
@@ -68,42 +46,38 @@ Ensure: Detected pose P and tracked point T
 6. Return P, T
 ```
 
----
-
-#### 3. Locating the Stethoscope Subsystem
-
-This subsystem ensures the stethoscope is accurately positioned on the patient’s body with the help of a robotic arm.
-
-1. **User Interface for Caregiver:**  
+  
+3. **Locating the Stethoscope Location Subsystem**  
+Ensures **accurate stethoscope placement** using a robotic arm.  
+   1. **User Interface for Caregiver:**  
 The caregiver can manually place the stethoscope by referring to the live video feed and the selected point, marked with a red dot on the UI.
-
-
-2. **Robotic Arm Assistance:**  
+   2. **Robotic Arm Assistance:**  
 The system uses a **Dobot Robotic Arm** that receives coordinates from Firebase and moves the stethoscope to the specified location with high precision. The robotic arm uses inverse kinematics to determine the necessary joint angles based on the target coordinates:
-   \[
-   \theta = f_{\text{inv}}(X)
-   \]
-   
-   where:
-   - \( \theta \) represents the joint angles,
-   - \( X \) is the target position (x and y coordinates),
-   - \( f_{\text{inv}} \) denotes the inverse kinematics function.
+
+      θ = f_inv(X)
+
+       where:
+          - **θ** represents the joint angles,
+          - **X** is the target position (**x** and **y** coordinates),
+          - **f_inv** denotes the inverse kinematics function.
 
 A demonstration video of the robotic arm's movement is available below:
 - [Watch Robotic Arm Test Here (Local)](./figures/ROBOTIC_ARM_TEST.mp4)
 - [Watch Robotic Arm Test on Google Drive](https://drive.google.com/file/d/129X1QHnHIa02VOYFutS4KzQeHdDp3Whk/view?usp=sharing)
 
 
+[Download Full PDF](./figures/Sys1.pdf)
+
 ---
 
 ## Hardware Components
-
 The system integrates several hardware components to facilitate effective communication and precise stethoscope placement:
 1. Digital Stethoscope - Thinklabs One
 2. Audio Splitter and Cable
 3. Sound Blaster USB
 4. Headphones
 5. ThinkLink
+6. Dobot Robotic Arm
 ![Hardware Components](./figures/thinksone.png)
 
 ---
